@@ -1,21 +1,16 @@
 export const metadata = {
-  title: "Premium Health & Fitness Products",
-  description: "Discover our curated collection of premium health supplements, protein powders, vitamins, and wellness products. Quality products to support your fitness and health goals.",
+  title: "Client Testimonials & Experiences | The Wellness Spot",
+  description: "Discover stories, videos, and testimonials from our clients on their health and fitness transformations.",
   keywords: [
-    "health supplements",
-    "protein powder",
-    "vitamins",
-    "fitness products",
-    "wellness products",
-    "sports nutrition",
-    "weight management",
-    "muscle building",
-    "health store",
-    "supplement store"
+    "testimonials",
+    "client transformations",
+    "wellness spot reviews",
+    "fitness stories",
+    "health coaching reviews"
   ],
   openGraph: {
-    title: "Premium Health & Fitness Products | The Wellness Spot",
-    description: "Discover our curated collection of premium health supplements, protein powders, vitamins, and wellness products for your health journey.",
+    title: "Testimonials & Experiences | The Wellness Spot",
+    description: "Discover stories, videos, and testimonials from our clients on their health and fitness transformations.",
     url: "/products",
     type: "website",
     images: [
@@ -23,14 +18,14 @@ export const metadata = {
         url: "/images/products-og.jpg", 
         width: 1200,
         height: 630,
-        alt: "Premium health and fitness products",
+        alt: "Client testimonials and experiences",
       }
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Premium Health & Fitness Products | The Wellness Spot",
-    description: "Discover our curated collection of premium health supplements, protein powders, vitamins, and wellness products for your health journey.",
+    title: "Testimonials & Experiences | The Wellness Spot",
+    description: "Discover stories, videos, and testimonials from our clients on their health and fitness transformations.",
     images: ["/images/products-og.jpg"],
   },
   alternates: {

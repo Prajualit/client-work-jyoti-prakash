@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import trainer from "../app/assets/trainer.png";
 import homeimage from "../app/assets/homeimage.png";
+import backgroundImage from "../app/assets/background.png";
 
 export default function Landing() {
   return (

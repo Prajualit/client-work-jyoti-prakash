@@ -64,7 +64,7 @@ export default function ProductsPage() {
         {/* Content */}
         <div className="relative md:mt-[5%] sm:mt-[10%] mt-[15%] z-10 h-full text-center flex flex-col items-center justify-center">
           <h1 className="text-3xl md:text-5xl font-bold text-white">Empower Your Health Journey</h1>
-          <p className="text-xl mt-4 text-white">Premium Products & Services Tailored for You</p>
+          <p className="text-xl mt-4 text-white">Client Testimonials & Experiences</p>
         </div>
       </div>
 

@@ -32,7 +32,7 @@ const Header = () => {
             href: 'nutrition'
         },
         {
-            label: 'Products',
+            label: 'Testimonials',
             href: 'products'
         },
         {

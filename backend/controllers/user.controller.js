@@ -24,9 +24,31 @@ const generateAccessAndRefreshTokens = async (userId) => {
     throw new apiError(
       500,
       error?.message ||
-        "Something went wrong while generating Access and Refresh Token"
+      "Something went wrong while generating Access and Refresh Token"
     );
   }
+};
+
+const getCookieOptions = (req, maxAge) => {
+  const isProduction = process.env.NODE_ENV === "production";
+  const isSecureConnection = req.secure || req.headers["x-forwarded-proto"] === "https";
+
+  // Standard web browser rule: SameSite=None requires Secure=true over HTTPS.
+  // Over HTTP (like local dev), secure must be false and sameSite MUST be "Lax".
+  const useSecure = isProduction && isSecureConnection;
+
+  const options = {
+    httpOnly: true,
+    secure: useSecure,
+    sameSite: useSecure ? "None" : "Lax",
+    path: "/",
+  };
+
+  if (maxAge !== undefined) {
+    options.maxAge = maxAge;
+  }
+
+  return options;
 };
 
 const loginUser = asyncHandler(async (req, res) => {
@@ -62,21 +84,7 @@ const loginUser = asyncHandler(async (req, res) => {
   );
   const loggedInUser = await User.findById(user._id).select("-refreshToken");
 
-  // Use consistent cookie options for both development and production
-  const isProduction = process.env.NODE_ENV === "production";
-  
-  // For production, we need proper cross-origin cookie settings
-  // Detect if we're behind a proxy (like Render, Vercel, etc.)
-  const isSecureConnection = req.secure || req.headers['x-forwarded-proto'] === 'https';
-  
-  const options = {
-    httpOnly: true,
-    secure: isProduction && isSecureConnection, // Secure only if production AND https
-    sameSite: isProduction ? "None" : "Lax", // None for cross-origin in production
-    maxAge: 10 * 24 * 60 * 60 * 1000, // 10 days
-    path: "/",
-    // Don't set domain to let browser handle it automatically
-  };
+  const options = getCookieOptions(req, 10 * 24 * 60 * 60 * 1000); // 10 days
 
   const response = res
     .status(200)
@@ -115,13 +123,7 @@ const logoutUser = asyncHandler(async (req, res) => {
       }
     }
 
-    const isProduction = process.env.NODE_ENV === "production";
-    const options = {
-      httpOnly: true,
-      secure: isProduction,
-      sameSite: isProduction ? "None" : "Lax",
-      path: "/",
-    };
+    const options = getCookieOptions(req);
 
     return res
       .status(200)
@@ -130,13 +132,7 @@ const logoutUser = asyncHandler(async (req, res) => {
       .json(new apiResponse(200, null, "User logged out successfully"));
   } catch (error) {
     // Even if there's an error, clear cookies and return success
-    const isProduction = process.env.NODE_ENV === "production";
-    const options = {
-      httpOnly: true,
-      secure: isProduction,
-      sameSite: isProduction ? "None" : "Lax",
-      path: "/",
-    };
+    const options = getCookieOptions(req);
 
     return res
       .status(200)
@@ -159,19 +155,8 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
     user.refreshToken = newRefreshToken;
     await user.save({ validateBeforeSave: false });
 
-    const isProduction = process.env.NODE_ENV === "production";
-    const options = {
-      httpOnly: true,
-      secure: isProduction,
-      sameSite: isProduction ? "None" : "Lax",
-      maxAge: 3 * 24 * 60 * 60 * 1000,
-      path: "/",
-    };
-
-    const refreshOptions = {
-      ...options,
-      maxAge: 10 * 24 * 60 * 60 * 1000, 
-    };
+    const options = getCookieOptions(req, 3 * 24 * 60 * 60 * 1000);
+    const refreshOptions = getCookieOptions(req, 10 * 24 * 60 * 60 * 1000);
 
     return res
       .status(200)
@@ -228,7 +213,7 @@ const validateUserDetails = asyncHandler(async (req, res) => {
       if (user.name !== name.trim()) {
         console.log("❌ VALIDATE: Name mismatch");
         throw new apiError(
-          400, 
+          400,
           `Phone number is already registered with a different name.`
         );
       }

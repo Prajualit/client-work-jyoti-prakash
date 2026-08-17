@@ -20,7 +20,7 @@ const navItems = [
   { label: "Home", href: "/" },
   { label: "Nutrition", href: "/nutrition" },
   { label: "Query", href: "/query", showOnlyOnHome: false },
-  { label: "Products", href: "/products" },
+  { label: "Testimonials", href: "/products" },
   { label: "Contact", href: "#footer" },
 ];
 

@@ -1,11 +1,24 @@
+"use client";
+
 import Image from "next/image";
 import owner1 from "../app/assets/owner1.jpg";
 import owner2 from "../app/assets/owner2.png";
 import owner3 from "../app/assets/owner3.jpg";
 import owner4 from "../app/assets/owner4.jpg";
 import owner5 from "../app/assets/owner5.jpg";
-import certificate from "@/app/assets/certification.jpg";
+import cert1 from "../app/assets/certifications/img1.jpeg";
+import cert2 from "../app/assets/certifications/img2.jpeg";
+import cert3 from "../app/assets/certifications/img3.jpeg";
+import cert4 from "../app/assets/certifications/img4.png";
+import cert5 from "../app/assets/certifications/img5.jpeg";
 import Link from "next/link";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+const certifications = [cert1, cert2, cert3, cert4, cert5];
 
 const aboutList = [
   {
@@ -88,19 +101,80 @@ export default function About() {
         id="about"
         className="w-full py-32 flex flex-col gap-10 px-8 bg-gradient-to-tr from-[#e3fcec] via-white to-[#e8f0fe] relative overflow-hidden"
       >
-        <h2 className="text-4xl font-extrabold text-center text-black mb-12">
+        <h2 className="text-4xl font-extrabold text-center text-black mb-4">
           Meet Your Trainers
         </h2>
+
+        <div className="max-w-4xl mx-auto w-full mb-12 relative">
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            grabCursor={true}
+            centeredSlides={true}
+            slidesPerView={1}
+            spaceBetween={0}
+            loop={true}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            navigation={{
+              nextEl: ".cert-swiper-next",
+              prevEl: ".cert-swiper-prev",
+            }}
+            pagination={{
+              clickable: true,
+            }}
+            className="cert-swiper pb-14"
+          >
+            {certifications.map((cert, index) => (
+              <SwiperSlide key={index}>
+                <div className="relative w-full h-[500px] md:h-[600px]">
+                  <Image
+                    src={cert}
+                    alt={`Certification ${index + 1}`}
+                    fill
+                    sizes="100vw"
+                    className="object-contain"
+                    priority={index < 3}
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          <button className="cert-swiper-prev absolute left-0 top-1/2 -translate-y-1/2 z-30 w-11 h-11 bg-white/80 shadow-lg rounded-full flex items-center justify-center text-emerald-600 hover:bg-emerald-50 hover:shadow-emerald-200/50 transition-all duration-300 group">
+            <svg
+              className="w-5 h-5 transform group-hover:-translate-x-0.5 transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+          </button>
+          <button className="cert-swiper-next absolute right-0 top-1/2 -translate-y-1/2 z-30 w-11 h-11 bg-white/80 shadow-lg rounded-full flex items-center justify-center text-emerald-600 hover:bg-emerald-50 hover:shadow-emerald-200/50 transition-all duration-300 group">
+            <svg
+              className="w-5 h-5 transform group-hover:translate-x-0.5 transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </button>
+        </div>
+
         <div className="flex flex-col items-center justify-center space-y-10 xl:space-y-20">
-          <div className="border-4 border-double border-amber-600 p-4 bg-gradient-to-br from-amber-50 to-amber-100">
-            <Image
-              src={certificate}
-              alt="Owner"
-              width={200}
-              height={300}
-              className="object-cover w-full h-full"
-            />
-          </div>
           <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center md:space-x-5 space-y-5">
             <div
               className="flex items-center justify-center"
@@ -202,6 +276,30 @@ export default function About() {
           ))}
         </div>
       </section>
+
+      <style jsx global>{`
+        .cert-swiper .swiper-pagination {
+          bottom: 0 !important;
+        }
+
+        .cert-swiper .swiper-pagination-bullet {
+          width: 10px;
+          height: 10px;
+          background: #059669;
+          opacity: 0.4;
+          transition: all 0.3s ease;
+          border-radius: 100%;
+        }
+
+        .cert-swiper .swiper-pagination-bullet-active {
+          opacity: 1;
+          transform: scale(1.2);
+        }
+
+        .cert-swiper {
+          overflow: hidden;
+        }
+      `}</style>
     </div>
   );
 }
