@@ -101,9 +101,15 @@ export default function About() {
         id="about"
         className="w-full py-32 flex flex-col gap-10 px-8 relative overflow-hidden"
       >
-        <h2 className="text-4xl font-extrabold text-center text-black mb-4">
-          Meet Your Trainers
-        </h2>
+        <div className="text-center mb-4">
+          <h2 className="text-5xl font-bold bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">
+            Meet Your Trainers
+          </h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            Expert wellness and lifestyle coaches dedicated to guiding you towards a healthier, more balanced life
+          </p>
+          <div className="w-24 h-1 bg-gradient-to-r from-emerald-500 to-blue-500 mx-auto mt-8 rounded-full"></div>
+        </div>
 
         <div className="max-w-4xl mx-auto w-full mb-12 relative">
           <Swiper

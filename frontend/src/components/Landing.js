@@ -43,7 +43,7 @@ export default function Landing() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1 }}
             >
-              <div className="flex items-end justify-start gap-4 md:gap-6 lg:gap-8">
+              <div className="hidden sm:flex items-end justify-start gap-4 md:gap-6 lg:gap-8">
                 <div className="flex-shrink-0">
                   <NutritionPlan />
                 </div>
