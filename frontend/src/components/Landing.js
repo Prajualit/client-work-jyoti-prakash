@@ -1,71 +1,82 @@
-import Image from "next/image";
-import Link from "next/link";
-import trainer from "../app/assets/trainer.png";
-import homeimage from "../app/assets/homeimage.png";
-import backgroundImage from "../app/assets/background.png";
+"use client";
+
+import { motion } from "framer-motion";
+import Brand from "./landing/Brand";
+import DnaHelix from "./landing/DnaHelix";
+import HeroContent from "./landing/HeroContent";
+import FeatureList from "./landing/FeatureList";
+import NutritionPlan from "./landing/NutritionPlan";
+import MeasuringTape from "./landing/MeasuringTape";
+import DnaTestReport from "./landing/DnaTestReport";
+import DnaCollectionKit from "./landing/DnaCollectionKit";
 
 export default function Landing() {
   return (
-    <div>
-      <main
-        id="home"
-        className="relative bg-gradient-to-br from-[#e3fcec] via-white to-[#e8f0fe] flex flex-col lg:flex-row items-center justify-between px-12 py-20 lg:py-32 w-full xl:space-x-20 "
-      >
-        <div
-          className="flex flex-col gap-7 max-sm:gap-0 max-xl:space-y-20 max-xl:items-center max-xl:justify-center max-sm:text-center xl:w-[50%]"
-        >
-          <h1 className="text-5xl text-start font-extrabold text-gray-900 mb-2 leading-tight font-[Montserrat]">
-            Unlock Your Best Self with Personal Fitness Training
-          </h1>
-          <p className="text-lg text-start text-gray-700 font-medium mb-4">
-            Transform your body, boost your energy, and achieve your fitness
-            goals with personalized coaching, smart nutrition, and a motivating
-            community.
-          </p>
-          <div className="flex gap-5 mt-2 ">
-            <Link href="/booking">
-              <button
-                id="book-session-btn"
-                className="px-7 py-3 text-white rounded-lg cursor-pointer font-bold text-lg shadow-lg bg-green-600 hover:bg-green-700 duration-300 ease-in-out tracking-wide flex items-center gap-2 "
-              >
-                <svg
-                  className="svg-inline--fa fa-calendar-check"
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fas"
-                  data-icon="calendar-check"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 448 561"
-                  width={22}
-                  height={22}
-                >
-                  <path
-                    fill="white"
-                    d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zM329 305c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-95 95-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L329 305z"
-                  />
-                </svg>
-                Book a Session
-              </button>
-            </Link>
+    <section
+      id="home"
+      className="relative w-full overflow-hidden"
+      style={{ minHeight: "100vh" }}
+    >
+      {/* Main hero content layer */}
+      <div className="relative z-10 w-full max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 pt-24 md:pt-28 lg:pt-32 pb-8">
+        {/* 3-column layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(180px,380px)_1fr_minmax(180px,280px)] gap-6 lg:gap-8 xl:gap-12 items-start">
+
+          {/* LEFT: Brand + DNA Helix */}
+          <div className="flex flex-col items-start gap-6 lg:gap-8">
+            <Brand />
+            <div className="hidden md:flex justify-center lg:justify-start mt-4 lg:mt-8">
+              <DnaHelix />
+            </div>
+          </div>
+
+          {/* CENTER: Hero Content + Visual Composition */}
+          <div className="flex flex-col">
+            <div className="pt-8 md:pt-12 lg:pt-20 xl:pt-24">
+              <HeroContent />
+            </div>
+
+            {/* Visual composition - directly below CTAs */}
+            <motion.div
+              className="relative pt-10 md:pt-12 lg:pt-14"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1 }}
+            >
+              <div className="flex items-end justify-start gap-4 md:gap-6 lg:gap-8">
+                <div className="flex-shrink-0">
+                  <NutritionPlan />
+                </div>
+
+                <div className="hidden md:block flex-shrink-0">
+                  <DnaTestReport />
+                </div>
+
+                <div className="flex-shrink-0">
+                  <DnaCollectionKit />
+                </div>
+              </div>
+
+              {/* Measuring tape - overlaps across elements */}
+              <div className="hidden sm:block absolute  left-[20%] right-[15%] z-10">
+                <MeasuringTape />
+              </div>
+            </motion.div>
+
+            {/* Mobile-only stacked layout */}
+            <div className="sm:hidden flex flex-col items-center gap-6 pt-8">
+              <NutritionPlan />
+              <DnaTestReport />
+              <DnaCollectionKit />
+            </div>
+          </div>
+
+          {/* RIGHT: Feature List */}
+          <div className="flex items-start justify-center lg:justify-end pt-4 md:pt-8 lg:pt-16">
+            <FeatureList />
           </div>
         </div>
-        <div
-          className="flex-1 flex items-center justify-center"
-          id="main-hero-image-block"
-        >
-          <div className="relative">
-            <Image
-              className="rounded-2xl max-xl:mt-10 object-cover shadow-xl border-4 border-white"
-              src={homeimage}
-              height={350}
-              alt="athletic fitness trainer male posing gym, motivational, high contrast, professional, editorial, dribbble style"
-              priority
-            ></Image>
-            
-          </div>
-        </div>
-      </main>
-    </div>
+      </div>
+    </section>
   );
 }

@@ -8,6 +8,7 @@ import About from "@/components/about";
 import Testimonials from "@/components/testimonials";
 import Product from "@/components/Families";
 import Footer from "@/components/footer";
+import BackgroundDecorations from "@/components/landing/BackgroundDecorations";
 import { useSelector } from "react-redux";
 
 export default function Home() {
@@ -77,15 +78,18 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      <div className="w-screen h-screen bg-[#f7fafc] overflow-x-hidden ">
-        <Navbar />
-        <main role="main">
-          <Landing />
-          <About />
-          <Testimonials />
-          <Product />
-        </main>
-        <Footer />
+      <div className="relative w-full min-h-screen overflow-x-hidden" style={{ background: "#FFFDF5" }}>
+        <BackgroundDecorations />
+        <div className="relative z-10">
+          <Navbar />
+          <main role="main">
+            <Landing />
+            <About />
+            <Testimonials />
+            <Product />
+          </main>
+          <Footer />
+        </div>
       </div>
     </>
   );

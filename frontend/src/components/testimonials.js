@@ -26,7 +26,7 @@ export default function Testimonials() {
 
   return (
     <div id="testimonials">
-      <section className="w-full pb-32 px-8 bg-gradient-to-br from-[#e3fcec] via-white to-[#e8f0fe] relative overflow-hidden">
+        <section className="w-full pb-32 px-8 relative overflow-hidden">
         <div className="absolute inset-0 opacity-30">
           <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full blur-3xl animate-pulse delay-1000"></div>

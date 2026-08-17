@@ -99,7 +99,7 @@ export default function About() {
     <div>
       <section
         id="about"
-        className="w-full py-32 flex flex-col gap-10 px-8 bg-gradient-to-tr from-[#e3fcec] via-white to-[#e8f0fe] relative overflow-hidden"
+        className="w-full py-32 flex flex-col gap-10 px-8 relative overflow-hidden"
       >
         <h2 className="text-4xl font-extrabold text-center text-black mb-4">
           Meet Your Trainers

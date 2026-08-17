@@ -7,7 +7,7 @@ export default function Product() {
     <div>
       <section
         id="products"
-        className="w-full pb-32 px-8 bg-gradient-to-tr from-[#e3fcec] via-white to-[#e8f0fe] relative overflow-hidden"
+        className="w-full pb-32 px-8 relative overflow-hidden"
       >
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-">
