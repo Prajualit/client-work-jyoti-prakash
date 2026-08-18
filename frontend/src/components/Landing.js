@@ -9,6 +9,9 @@ import NutritionPlan from "./landing/NutritionPlan";
 import MeasuringTape from "./landing/MeasuringTape";
 import DnaTestReport from "./landing/DnaTestReport";
 import DnaCollectionKit from "./landing/DnaCollectionKit";
+import Image from "next/image";
+import img1 from "@/app/assets/landing/dnacollectionkit.png";
+import img2 from "@/app/assets/landing/dna.png";
 
 export default function Landing() {
   return (
@@ -21,12 +24,31 @@ export default function Landing() {
       <div className="relative z-10 w-full max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 pt-24 md:pt-28 lg:pt-32 pb-8">
         {/* 3-column layout */}
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(180px,380px)_1fr_minmax(180px,280px)] gap-6 lg:gap-8 xl:gap-12 items-start">
-
           {/* LEFT: Brand + DNA Helix */}
           <div className="flex flex-col items-start gap-6 lg:gap-8">
             <Brand />
             <div className="hidden md:flex justify-center lg:justify-start mt-4 lg:mt-8">
-              <DnaHelix />
+              <div className="relative w-full max-w-[320px]">
+                <Image
+                  src={img2}
+                  alt="dna helix"
+                  width={320}
+                  height={500}
+                  className="w-full h-auto"
+                />
+                <div
+                  className="absolute inset-x-0 top-0 h-28 pointer-events-none"
+                  style={{
+                    background: "linear-gradient(to bottom, #FFFDF5 0%, transparent 40%)",
+                  }}
+                />
+                <div
+                  className="absolute inset-x-0 bottom-0 h-28 pointer-events-none"
+                  style={{
+                    background: "linear-gradient(to top, #FFFDF5 0%, transparent 40%)",
+                  }}
+                />
+              </div>
             </div>
           </div>
 
@@ -43,6 +65,13 @@ export default function Landing() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1 }}
             >
+              <Image
+                src={img1}
+                alt="dna collection kit"
+                width={500}
+                height={250}
+                className="w-full h-auto rounded-2xl object-cover mb-5"
+              />
               <div className="hidden sm:flex items-end justify-start gap-4 md:gap-6 lg:gap-8">
                 <div className="flex-shrink-0">
                   <NutritionPlan />
@@ -50,10 +79,6 @@ export default function Landing() {
 
                 <div className="hidden md:block flex-shrink-0">
                   <DnaTestReport />
-                </div>
-
-                <div className="flex-shrink-0">
-                  <DnaCollectionKit />
                 </div>
               </div>
 

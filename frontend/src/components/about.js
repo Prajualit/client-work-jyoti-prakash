@@ -11,6 +11,7 @@ import cert2 from "../app/assets/certifications/img2.jpeg";
 import cert3 from "../app/assets/certifications/img3.jpeg";
 import cert4 from "../app/assets/certifications/img4.png";
 import cert5 from "../app/assets/certifications/img5.jpeg";
+import cert6 from "../app/assets/certifications/img6.jpg";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
@@ -18,7 +19,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-const certifications = [cert1, cert2, cert3, cert4, cert5];
+const certifications = [cert1, cert2, cert3, cert4, cert5, cert6];
 
 const aboutList = [
   {

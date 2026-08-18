@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 
+
 const checkItems = [
   "Personalized Diet",
   "Balanced Nutrition",
@@ -12,76 +13,11 @@ const checkItems = [
 export default function NutritionPlan() {
   return (
     <motion.div
-      className="relative"
+      className="relative flex flex-col gap-3"
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 1.2 }}
     >
-      {/* Food bowl */}
-      <div className="relative mb-3">
-        <svg viewBox="0 0 260 180" className="w-[200px] md:w-[240px] lg:w-[280px] h-auto" aria-label="Healthy food bowl with vegetables, berries, and nuts">
-          <defs>
-            <radialGradient id="bowlGrad" cx="50%" cy="60%" r="50%">
-              <stop offset="0%" stopColor="#DEB887" stopOpacity="0.3" />
-              <stop offset="100%" stopColor="#C4A265" stopOpacity="0.6" />
-            </radialGradient>
-            <radialGradient id="bowlInner" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#F5E6D0" />
-              <stop offset="100%" stopColor="#E8D5B7" />
-            </radialGradient>
-          </defs>
-
-          {/* Bowl shadow */}
-          <ellipse cx="130" cy="168" rx="110" ry="10" fill="#000" opacity="0.06" />
-
-          {/* Bowl outer */}
-          <ellipse cx="130" cy="120" rx="120" ry="50" fill="url(#bowlGrad)" />
-          <ellipse cx="130" cy="120" rx="115" ry="46" fill="#DEB887" opacity="0.4" />
-
-          {/* Bowl inner */}
-          <ellipse cx="130" cy="110" rx="100" ry="38" fill="url(#bowlInner)" />
-
-          {/* Food items */}
-          {/* Lettuce base */}
-          <ellipse cx="100" cy="105" rx="40" ry="18" fill="#7CB342" opacity="0.8" />
-          <ellipse cx="160" cy="108" rx="35" ry="15" fill="#8BC34A" opacity="0.7" />
-
-          {/* Broccoli */}
-          <circle cx="85" cy="95" r="12" fill="#558B2F" />
-          <circle cx="78" cy="90" r="8" fill="#689F38" />
-          <circle cx="92" cy="88" r="9" fill="#7CB342" />
-          <circle cx="85" cy="85" r="7" fill="#8BC34A" />
-
-          {/* Bell pepper (yellow) */}
-          <ellipse cx="140" cy="92" rx="14" ry="12" fill="#FDD835" />
-          <ellipse cx="140" cy="90" rx="10" ry="8" fill="#FFEE58" opacity="0.6" />
-
-          {/* Tomatoes */}
-          <circle cx="115" cy="88" r="9" fill="#E53935" />
-          <circle cx="115" cy="87" r="6" fill="#EF5350" opacity="0.5" />
-          <circle cx="170" cy="100" r="7" fill="#E53935" />
-
-          {/* Avocado */}
-          <ellipse cx="190" cy="95" rx="15" ry="12" fill="#7CB342" />
-          <ellipse cx="190" cy="93" rx="10" ry="8" fill="#C0CA33" opacity="0.5" />
-          <circle cx="190" cy="92" r="6" fill="#8D6E63" />
-
-          {/* Blueberries */}
-          <circle cx="100" cy="82" r="4" fill="#5C6BC0" />
-          <circle cx="108" cy="78" r="3.5" fill="#3F51B5" />
-          <circle cx="95" cy="79" r="3" fill="#5C6BC0" />
-          <circle cx="155" cy="82" r="3.5" fill="#5C6BC0" />
-          <circle cx="162" cy="79" r="3" fill="#3F51B5" />
-
-          {/* Almonds */}
-          <ellipse cx="125" cy="80" rx="4" ry="2.5" fill="#A1887F" transform="rotate(-20 125 80)" />
-          <ellipse cx="132" cy="77" rx="3.5" ry="2" fill="#8D6E63" transform="rotate(15 132 77)" />
-          <ellipse cx="145" cy="80" rx="4" ry="2.5" fill="#A1887F" transform="rotate(-10 145 80)" />
-
-          {/* Bowl rim highlight */}
-          <ellipse cx="130" cy="72" rx="98" ry="6" fill="white" opacity="0.15" />
-        </svg>
-      </div>
 
       {/* Nutrition Plan card */}
       <motion.div
