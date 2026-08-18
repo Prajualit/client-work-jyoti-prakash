@@ -28,7 +28,12 @@ export default function Landing() {
           <div className="flex flex-col items-start gap-6 lg:gap-8">
             <Brand />
             <div className="hidden md:flex justify-center lg:justify-start mt-4 lg:mt-8">
-              <div className="relative w-full max-w-[320px]">
+              <motion.div
+                className="relative w-full max-w-[320px]"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.6 }}
+              >
                 <Image
                   src={img2}
                   alt="dna helix"
@@ -48,7 +53,7 @@ export default function Landing() {
                     background: "linear-gradient(to top, #FFFDF5 0%, transparent 40%)",
                   }}
                 />
-              </div>
+              </motion.div>
             </div>
           </div>
 
@@ -65,13 +70,19 @@ export default function Landing() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1 }}
             >
-              <Image
-                src={img1}
-                alt="dna collection kit"
-                width={500}
-                height={250}
-                className="w-full h-auto rounded-2xl object-cover mb-5"
-              />
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 1.2 }}
+              >
+                <Image
+                  src={img1}
+                  alt="dna collection kit"
+                  width={500}
+                  height={250}
+                  className="w-full h-auto rounded-2xl object-cover mb-5"
+                />
+              </motion.div>
               <div className="hidden sm:flex items-end justify-start gap-4 md:gap-6 lg:gap-8">
                 <div className="flex-shrink-0">
                   <NutritionPlan />
@@ -92,7 +103,6 @@ export default function Landing() {
             <div className="sm:hidden flex flex-col items-center gap-6 pt-8">
               <NutritionPlan />
               <DnaTestReport />
-              <DnaCollectionKit />
             </div>
           </div>
 
